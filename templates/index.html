@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Image Browser</title>
+  <style>
+    /* Simple styling to arrange images */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .gallery-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px;
+    }
+
+    .gallery-item {
+      max-width: 200px;  /* or adjust as needed */
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .gallery-item img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Image Browser</h1>
+  <div class="gallery-container">
+    {% for image_file in images %}
+      <div class="gallery-item">
+        <img 
+          src="{{ url_for('static', filename='images/' ~ image_file) }}" 
+          alt="{{ image_file }}"
+        />
+        <p>{{ image_file }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</body>
+</html>

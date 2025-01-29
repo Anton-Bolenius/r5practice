@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Single Image Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .nav-links {
+      margin-top: 20px;
+    }
+    a {
+      text-decoration: none;
+      color: #007BFF;
+      padding: 0.5rem 1rem;
+      border: 1px solid #007BFF;
+      border-radius: 5px;
+      margin: 0 0.5rem;
+    }
+    a:hover {
+      background-color: #007BFF;
+      color: #fff;
+    }
+    .image-container {
+      display: inline-block;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Single Image Viewer</h1>
+
+  <div class="image-container">
+    <img
+      src="{{ url_for('static', filename='images/' ~ image_file) }}"
+      alt="Image"
+      style="max-width: 600px; height: auto;"
+    >
+    <p>{{ image_file }} ({{ index + 1 }} of {{ total }})</p>
+  </div>
+
+  <div class="nav-links">
+    <a href="/{{ prev_index }}">Previous</a>
+    <a href="/{{ next_index }}">Next</a>
+  </div>
+
+</body>
+</html>
